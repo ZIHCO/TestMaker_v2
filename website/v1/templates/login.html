@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<A class="nav-item nav-link" id="home" href="/">TestMaker</A>
+{% endblock %}
+
+{% block content %}
+<FORM method="POST">
+  <H3 align="center">Already have an account, login</H3>
+  <DIV class="form-group">
+    <LABEL for="email">Email Address</LABEL>
+    <INPUT
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="password">Password</LABEL>
+    <INPUT
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      placeholder="Enter password"
+    />
+  </DIV>
+  <BR />
+  <BUTTON type="submit" class="btn btn-primary">Login</BUTTON>
+</FORM>
+{% endblock %}
+
