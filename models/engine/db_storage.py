@@ -13,6 +13,11 @@ from models.question import Question
 classes = {"Examiner": Examiner, "Exam": Exam, "Examinee": Examinee,
            "Question": Question, "Grade": Grade}
 
+conn = (f"mysql+mysqldb://{getenv('TESTMAKER_MYSQL_USER')}"
+        f":{getenv('TESTMAKER_MYSQL_PWD')}@"
+        f"{getenv('TESTMAKER_MYSQL_HOST')}/"
+        f"{getenv('TESTMAKER_MYSQL_DB')}")
+
 
 class DBStorage:
     """persists to mysql server"""
@@ -20,10 +25,6 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        conn = (f"mysql+mysqldb://{getenv('TESTMAKER_MYSQL_USER')}"
-                f":{getenv('TESTMAKER_MYSQL_PWD')}@"
-                f"{getenv('TESTMAKER_MYSQL_HOST')}/"
-                f"{getenv('TESTMAKER_MYSQL_DB')}")
         self.__engine = create_engine(conn, pool_pre_ping=True)
         if getenv('TESTMAKER_ENV') == 'test':
             Basemetadata.drop_all(self.__engine)
@@ -67,3 +68,17 @@ class DBStorage:
     def close(self):
         """end a session"""
         self.__session.close()
+
+    def get(self, cls, id):
+        from models import storage
+        """returns the object based on the class and its ID"""
+        obj_key = cls.__name__ + "." + id
+        if obj_key in storage.all(cls):
+            return storage.all(cls)[obj_key]
+
+    def count(self, cls=None):
+        from models import storage
+        """return count of objects in storage"""
+        if cls:
+            return len(storage.all(cls))
+        return len(storage.all())

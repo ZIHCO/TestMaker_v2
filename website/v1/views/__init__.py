@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """instantiate this package"""
 from flask import Blueprint
-
+from models import storage
+from models.examiner import Examiner
+ 
 app_views = Blueprint(name='app_views', import_name='__name__',
                       url_prefix='/')
 

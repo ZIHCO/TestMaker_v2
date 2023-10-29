@@ -37,8 +37,20 @@ def sign_in():
                        "first_name": first_name
                       }
             obj = Examiner(**new_dict)
-            storage.new(obj)
-            storage.save()
-            flash("Account created! Login to continue.", category='success')
-            return redirect(url_for('app_views.login'))
+            examiners = storage.all(Examiner)
+            for examiner_id, examiner in examiners.items():
+                if (examiners[examiner_id].email == email):
+                    flash('Email already exists. Sign in with another email address',
+                          category='error')
+                    return render_template("sign_in.html")
+                else:
+                    storage.new(obj)
+                    storage.save()
+                    flash("Account created! Login to continue.", category='success')
+                    return redirect(url_for('app_views.login'))
+            else:
+                storage.new(obj)
+                storage.save()
+                flash("Account created! Login to continue.", category='success')
+                return redirect(url_for('app_views.login'))
     return render_template("sign_in.html")
