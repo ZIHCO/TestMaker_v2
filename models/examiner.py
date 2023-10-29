@@ -4,9 +4,10 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from os import getenv
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 
-class Examiner(BaseModel, Base):
+class Examiner(BaseModel, Base, UserMixin):
     """This class create an examiner"""
 
     if getenv('TESTMAKER_TYPE_STORAGE') == 'db':
