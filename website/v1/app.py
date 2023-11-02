@@ -7,6 +7,7 @@ from os import getenv
 from models.engine.db_storage import conn
 from flask_login import LoginManager
 from models.examiner import Examiner
+from models.examinee import Examinee
 
 
 app = Flask(__name__)
@@ -18,7 +19,10 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_examiner(id):
-    return storage.get(Examiner, id)
+    if storage.get(Examiner, id):
+        return storage.get(Examiner, id)
+    elif storage.get(Examinee, id):
+        return storage.get(Examinee, id)
 
 app.register_blueprint(app_views)
 
@@ -30,5 +34,5 @@ def teardown(self):
 
 if __name__ == "__main__":
     if getenv('TESTMAKER_HOST') and getenv('TESTMAKER_PORT'):
-        app.run(host=getenv('TESTMKER_HOST'), port=getenv('TESTMAKER_PORT'),
+        app.run(host=getenv('TESTMAKER_HOST'), port=getenv('TESTMAKER_PORT'),
                 threaded=True)

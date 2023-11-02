@@ -12,3 +12,5 @@ if app_views is not None:
     from website.v1.views.login import *
     from website.v1.views.sign_in import *
     from website.v1.views.dashboard import *
+    from website.v1.views.make_new_test import *
+    from website.v1.views.add_new_question import *
