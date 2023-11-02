@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 
 {% block navbar %}
-<A class="nav-item nav-link" id="home" href="/">TestMaker</A>
-<A class="nav-item nav-link" id="logout" href="/logout">Log out</A>
-<A class="nav-item nav-link" id="dashboard" href="/{{ name.replace(" ", "_") }}">Dashboard</A>
-<A class="nav-item nav-link" id="mytests" href="/">My tests</A>
+  <A class="nav-item nav-link" id="home" href="/">TestMaker</A>
+  <A class="nav-item nav-link" id="dashboard" href="/{{ name.replace(" ", "_") }}">Dashboard</A>
+  <A class="nav-item nav-link" id="mytests" href="/{{ name.replace(" ", "_") }}/my_tests">My tests</A>
+  <A class="nav-item nav-link" href="/{{ name.replace(" ", "_") }}/add_candidate">Add a candidate</A>
+  <A class="nav-item nav-link" id="my_candidates" href="/{{ name.replace(" ", "_") }}/my_candidates">My candidates</A>
+  <A class="nav-item nav-link" id="logout" href="/logout">Log out</A>
 {% endblock %}
 
 {% block content %}
-<H1>Welcome back, <B>{{ name }}</></H1>
-<A href="/">Make a new test</A>
+  <H1>Welcome back, <B>{{ name }}</B></H1>
+  <A href="/{{ name.replace(" ", "_") }}/make_new_test">Make a new test</A>
 {% endblock %}
 

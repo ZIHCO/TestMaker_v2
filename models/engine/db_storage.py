@@ -9,6 +9,7 @@ from models.exam import Exam
 from models.examinee import Examinee
 from models.grade import Grade
 from models.question import Question
+from models.option import Option
 
 classes = {"Examiner": Examiner, "Exam": Exam, "Examinee": Examinee,
            "Question": Question, "Grade": Grade}
