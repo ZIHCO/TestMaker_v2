@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+  <UL>
+    <LI><A class="nav-item nav-link" id="dashboard" href="/{{ name.replace(" ", "_") }}">Dashboard</A></LI>
+    <LI><A class="nav-item nav-link" id="mytests" href="/{{ name.replace(" ", "_") }}/my_tests">My tests</A></LI>
+    <LI><A class="nav-item nav-link" id="add_new_question" href="/{{ name.replace(" ", "_") }}/{{ exam_name.replace(" ", "_") }}/add_new_question">Add a new question</A></LI>
+    <LI><A class="nav-item nav-link" id="logout" href="/logout">Log out</A></LI>
+  </UL>
+{% endblock %}
+
+{% block content %}
+<DIV style="justify-content: left; display: flex;">
+  <FORM method="POST">
+    <LEGEND>Choose a question type to add</LEGEND>
+    <UL class="question-type">  
+      <LI> 
+        <INPUT
+          type="radio"
+          id="multichoice"
+          name="question-type"
+          value="multichoice"
+	  checked
+        />
+        <LABEL for="multichoice">Multichoice question</LABEL><BR />
+      </LI>
+      <LI>
+        <INPUT
+          type="radio"
+          id="short_answer"
+          name="question-type"
+	  value="short_answer"
+        />
+	<LABEL for="short_answer">Short answer</LABEL><BR />
+      </LI>
+      <LI>
+        <INPUT
+          type="radio"
+          id="true_false"
+          name="question-type"
+	  value="true_false"
+	/>
+        <LABEL for="true_false">True/False</LABEL>
+      </LI>
+    </UL>
+    <BR />
+    <BUTTON type="submit" class="btn-primary">Add</BUTTON>
+    <BUTTON type="reset" class="btn-primary">Cancel</BUTTON>
+  </FORM>
+  <!--HR /-->
+  <DIV style="justify-content: center; display: flex; align-items: center; flex-wrap; wrap;">
+    <H3 style="color:green; font-size: 1.4rem; padding: 5px;">Select a question type to see its description</H3>
+  </DIV>
+</DIV>
+{% endblock %}
+

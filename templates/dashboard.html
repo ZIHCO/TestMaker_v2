@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+  <UL>
+    <LI><A id="dashboard" href="/{{ name.replace(" ", "_") }}">Dashboard</A></LI>
+    <LI><A id="mytests" href="/{{ name.replace(" ", "_") }}/my_tests">My tests</A></LI>
+    <LI><A cl href="/{{ name.replace(" ", "_") }}/add_candidate">Add a candidate</A></LI>
+    <LI><A class="nav-item nav-link" id="my_candidates" href="/{{ name.replace(" ", "_") }}/my_candidates">My candidates</A></LI>
+    <LI><A class="nav-item nav-link" id="logout" href="/logout">Log out</A></LI>
+  </UL>
+{% endblock %}
+
+{% block content %}
+  <SECTION class="cover-img intro">
+    <DIV class="intro-text">
+      <H2>Welcome back, <B>{{ name }}</B></H3>
+      <A href="/{{ name.replace(" ", "_") }}/make_new_test"><BUTTON class="btn-primary">Make a new test</BUTTON></A>
+    </DIV>
+  </SECTION>
+{% endblock %}
+

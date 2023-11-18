@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<UL>
+  <LI><A id="dashboard" href="/{{ name.replace(" ", "_") }}">Dashboard</A></LI>
+  <LI><A id="mytests" href="/{{ name.replace(" ", "_") }}/my_tests">My tests</A></LI>
+  <LI><A class="nav-item nav-link" id="my_candidates" href="/{{ name.replace(" ", "_") }}/my_candidates">My candidates</A></LI>
+  <LI><A class="nav-item nav-link" id="logout" href="/logout">Log out</A></LI>
+</UL>
+{% endblock %}
+
+{% block content %}
+  <H1><B>{{ name.replace("_", " ") }}</B> Tests</H1>
+  <H2>Select an exam to preview</H2>
+  <BR />
+  <UL>
+    {% for exam in exams %}
+      <LI>
+	<A href="/{{ name.replace(" ", "_") }}/my_tests/{{ exam.name.replace(" ", "_") }}">{{ exam.name }}</A>
+	<!---A href="/{{ name }}/my_tests/{{ exam.name }}">{{ exam.name }}</A--->
+      </LI>
+      {% endfor %}
+  </UL>
+{% endblock %}
+

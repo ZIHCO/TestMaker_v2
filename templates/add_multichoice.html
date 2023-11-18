@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<FORM method="POST">
+  <H3 align="center"></H3>
+  <DIV class="form-group">
+    <LABEL for="question">Question</LABEL>
+    <INPUT
+      type="text"
+      class="form-control"
+      id="question"
+      name="question"
+      placeholder="Enter question"
+      required
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="answer">Correct answer</LABEL>
+    <INPUT
+      type="text"
+      class="form-control"
+      id="answer"
+      name="answer"
+      placeholder="Enter the correct answer"
+      required
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="incorrect_answer1">Incorrect answer1</LABEL>
+    <INPUT
+      type="text"
+      class="form-control"
+      id="incorrect_answer1"
+      name="incorrect_answer1"
+      placeholder="Enter an incorrect answer"
+      required
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="incorrect_answer2">Incorrect answer2</LABEL>
+    <INPUT
+      type="text"
+      class="form-control"
+      id="incorrect_answer2"
+      name="incorrect_answer2"
+      placeholder="Enter an incorrect answer"
+      required
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="incorrect_answer3">Incorrect answer3</LABEL>
+    <INPUT
+      type="text"
+      class="form-control"
+      id="incorrect_answer3"
+      name="incorrect_answer3"
+      placeholder="Enter an incorrect answer"
+      required
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="point">Question weight</LABEL>
+    <INPUT
+      type="number"
+      class="form-control"
+      id="point"
+      name="point"
+      placeholder="100"
+      min="1"
+      max="100"
+      required
+    />
+  </DIV>
+  <BR />
+  <BUTTON type="submit" class="btn btn-primary">Submit</BUTTON>
+</FORM>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<HTML lang="en">
+  <HEAD>
+    <TITLE>{% block title %}TESTMAKER{% endblock %}</TITLE>
+    <META charset="utf-8" />
+    <META name="viewport" content="width=device-width, initial-scale=1" />
+    <LINK rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </HEAD>
+  <STYLE>
+    TABLE, TH, TD {
+      border:1px solid black;
+    }
+  </STYLE>
+  <BODY>
+    <HEADER id="header1">
+      <div class="logo">
+      <A href="/"><img src="/static/images/TestMaker.svg"></A>
+      </div>
+      <div class="project_name">
+        <H1>TestMaker</H1>
+        <P>for making and taking tests</P>
+      </div>
+      <NAV>
+	{% block navbar %}
+	{% endblock %}
+      </NAV>
+    </HEADER>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+	  {% if category == 'error' %}
+	    <DIV class="alert-error" role="alert">
+	      {{ message }}
+	      <SPAN class="close" onclick="this.parentElement.style.display='none';">&times;</SPAN>
+	    </DIV>
+	  {% else %}
+	    <DIV class="alert-success" role="alert">
+	      {{ message }}
+	      <SPAN class="close" onclick="this.parentElement.style.display='none';">&times;</SPAN>
+	    </DIV>
+	  {% endif %}
+	{% endfor %}
+      {% endif %}
+    {% endwith %}
+    <MAIN>
+      {% block content %}
+      {% endblock %}
+    </MAIN>
+    <footer>
+      <address>
+        <a href="https://zihco.github.io">TestMaker</a><br />
+        Enugu<br />
+        Nigeria<br />
+      </address>
+    </footer>
+  </BODY>
+</HTML>

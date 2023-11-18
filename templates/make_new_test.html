@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<UL>
+  <LI><A id="dashboard" href="/{{ name.replace(" ", "_") }}">Dashboard</A></LI>
+  <LI><A id="mytests" href="/{{ name.replace(" ", "_") }}/my_tests">My tests</A></LI>
+  <LI><A id="make_test" href="/{{ name.replace(" ", "_") }}/make_new_test">Make a new test</A></LI>
+  <LI><A id="logout" href="/logout">Log out</A></LI>
+</UL>
+{% endblock %}
+
+{% block content %}
+<FORM method="POST">
+  <H3 align=center">Make a New Test</H3>
+  <DIV class="form-group">
+    <LABEL for="name">Test name</LABEL>
+    <INPUT
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      placeholder="Enter test name"
+      required
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="grade">Grade</LABEL>
+    <INPUT
+      type="number"
+      class="form-control"
+      id="grade"
+      name="grade"
+      placeholder="100"
+      min="1"
+      max="100"
+      required
+    />
+  </DIV>
+  <BR />
+  <BUTTON type="submit" class="btn btn-primary">Create Test</BUTTON>
+</FORM>
+{% endblock %}
+

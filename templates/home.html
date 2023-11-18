@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<UL>
+  <LI><A href="/take_test">Take a Test</A></LI>
+</UL>
+{% endblock %}
+
+{% block content %}
+<section class="cover-img intro" id="features">
+  <div class="intro-text">
+    <H2>Welcome to TestMaker</H2>
+    <HR>
+    <P class="first">TestMaker is a solution for making individual based multichoice type assessment.</p>
+    <p>The individual assigned a test can just login and take the test.</p>
+    <DIV class="auth">
+      <UL>
+        <LI><A href="/login">Login</A></LI>
+        <LI><A href="/signin">Sign in</A></LI>
+      </UL>
+    </DIV>
+  </div>
+</section>
+{% endblock %}

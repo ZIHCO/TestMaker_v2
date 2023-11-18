@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <FORM class="test" method="POST">
+    <H3 align="center">{{ exam.name }} Test</H3>
+    {% for (question) in (exam.questions) %}
+      <DIV id={{ question.id }}>
+	<H4>Question {{ loop.index }}</H4>
+        <P>{{ question.question }}</P>
+        {% for option in question.options %}
+          <INPUT
+  	    type="radio"
+  	    name={{ question.id }}
+  	    id={{ option.id }}
+	    value={{ option.option.replace(" ", "_") }}
+  	  />
+  	  <LABEL for={{ option.id }}>{{ option.option }}</LABEL><BR />
+        {% endfor %}
+      </DIV>
+    {% endfor %}
+    <BR />
+    <BUTTON type="submit" class="btn btn-primary">Submit</BUTTON>
+  </FORM>
+{% endblock %}
+

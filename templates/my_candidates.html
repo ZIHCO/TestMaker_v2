@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<UL>
+  <LI><A id="dashboard" href="/{{ name.replace(" ", "_") }}">Dashboard</A></LI>
+  <LI><A id="my_candidates" href="/{{ name.replace(" ", "_") }}/my_candidates">My candidates</A></LI>
+  <LI><A id="logout" href="/logout">Log out</A></LI>
+</UL>
+{% endblock %}
+
+{% block content %}
+  <H1><B>{{ name.replace("_", " ") }}</B> Tests</H1>
+  <TABLE style="width:100%">
+    <TR>
+      <TH>Name</TH>
+      <TH>Examination name</TH>
+      <TH>Grade</TH>
+    </TR>
+    {% for examinee in examinees %}
+      <TR>
+	<TH>{{ examinee.first_name + " " + examinee.last_name }}</TH>
+	{% for exam in exams %}
+	  {% if exam.id == examinee.exam_id %}
+	  <TH>{{ exam.name }}</TH>
+	  {% endif %}
+	{% endfor %}
+	{% for grade in examiner.grades %}
+	  {% if grade.examinee_id == examinee.id %}
+	    <TH>{{ grade.score }}</TH>
+	  {% endif %}
+	{% endfor %}
+      </TR>
+    {% endfor %}
+  </TABLE>
+{% endblock %}

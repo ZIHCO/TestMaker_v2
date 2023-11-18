@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<FORM method="POST">
+  <H3 align="center">Login to take your test</H3>
+  <DIV class="form-group">
+    <LABEL for="email">Email Address</LABEL>
+    <INPUT
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="password">Password</LABEL>
+    <INPUT
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      placeholder="Enter password"
+    />
+  </DIV>
+  <DIV class="form-group">
+    <LABEL for="password">Examination name</LABEL>
+    <INPUT
+      type="text"
+      class="form-control"
+      id="exam_name"
+      name="exam_name"
+      placeholder="Enter examination name"
+    />
+  </DIV>
+  <BR />
+  <BUTTON type="submit" class="btn btn-primary">Login</BUTTON>
+</FORM>
+{% endblock %}
+
